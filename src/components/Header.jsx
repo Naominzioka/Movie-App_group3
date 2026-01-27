@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../App.css'
-import { User, Search } from "lucide-react";
+import { User, Search as SearchIcon } from "lucide-react";
 
 function Header() {
     const [showAccount, setShowAccount] = useState(false);
@@ -22,12 +22,19 @@ function Header() {
                         </div>
                     ) : null}
                 </div>
+                <div className="search-wrapper">
+                    <SearchIcon className="search-icon-inside" size={18} />
+                    <input
+                        type="text"
+                        placeholder="Search movies, shows..."
+                        className="search-input-field"
+                    />
+                </div>
+
             </header>
-            {/*<div className="search-box">
-                <Search color="white" size={18} />
-                <input type="text" placeholder="Search movies, shows..." />
-            </div>*/}
+
         </div>
+
     )
 }
 
