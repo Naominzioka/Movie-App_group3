@@ -1,0 +1,48 @@
+.movie-grid {
+  display: flex;           /* horizontal layout */
+  flex-wrap: wrap;         /* allow multiple rows if needed */
+  gap: 20px;               /* spacing between cards */
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.movie-card {
+  flex: 0 0 auto;          /* prevents cards from stretching */
+  width: 180px;            /* fixed width for all posters */
+  cursor: pointer;
+  position: relative;      /* for overlay play button */
+  transition: transform 0.2s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);  /* small hover zoom */
+}
+
+.movie-card img {
+  width: 20%;             /* scale image to card width */
+  height: 100px;           /* fixed height for all cards */
+  object-fit: cover;       /* crop if needed */
+  border-radius: 5px;
+  display: block;
+}
+
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 40px;
+  opacity: 0.8;
+  pointer-events: none;     /* clicks pass through to card */
+}
+
+.movie-title {
+  margin-top: 8px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
