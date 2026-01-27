@@ -1,10 +1,14 @@
+#root {
+  background-color: #0a1628;
+}
+
 .main-header {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
-  z-index: 100;
-  padding: 15px;
+  z-index: 1000;
+  padding: 3px 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -18,7 +22,7 @@
 nav {
   display: flex;
   align-items: center;
-  gap: 200px;
+  gap: 30px;
 }
 
 nav a {
@@ -54,28 +58,67 @@ nav a {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-@media (max-width: 1024px) {
-  nav {
-    gap: 1rem;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  margin-top: 80px;
+  box-sizing: border-box;
+  color: #FFFFFF;
 }
 
-@media (max-width: 768px) {
-  .main-header {
-    padding: 10px;
-  }
-
-  h1 {
-    font-size: 1.2rem;
-  }
+.gallery {
+  width: 100%;
+  display: block;
 }
 
-.search-wrapper {
-    max-width: 100%; 
-  }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 30px;
+  padding-top: 20px;
+  width: 100%;
+}
 
-  
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  margin: 10px 0 5px 0;
+  font-size: 1rem;
+}
+
+.player-view {
+  padding: 20px;
+  margin-top: 40px;
+  color: white;
+}
+
+.back-button {
+  background-color: #1a3a5a;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #2a5a8a;
+  border-color: white;
+}

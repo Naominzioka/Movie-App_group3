@@ -1,18 +1,16 @@
 import React from 'react';
-import Header from './components/Header';
-import { useState } from 'react'
+/*import Header from './components/Header';*/
 import './App.css'
+import MoviePlayer from './components/Movies';
 
 
 function App() {
- 
+
 
   return (
-    <>
-      <Header />
-      
-
-    </>
+    <div className="App">
+      <MoviePlayer />
+    </div>
   )
 }
 
