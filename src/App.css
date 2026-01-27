@@ -4,22 +4,56 @@
 
 .main-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0px;
+  left: 0px;
+  right: 0px;
   z-index: 100;
-  padding: 1rem 2rem;
+  padding: 15px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
+  border-radius: 5px;
+  background: linear-gradient(to bottom, #0a1628, #1a3a5a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 200px;
 }
 
 nav a {
+  color: #9CA3AF;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 12px;
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 8px 0;
+  min-width: 150px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
   color: white;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
