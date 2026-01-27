@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import '../App.css'
-import '../Search.css'
 import { User, Search as SearchIcon } from "lucide-react";
 
 function Header() {
