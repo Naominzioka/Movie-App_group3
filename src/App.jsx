@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './App.css'
+import './App.css';
 import MoviePlayer from './components/Movies';
+import TVShows from './components/TVShows';
 
 function App() {
   const [myList, setMyList] = useState([]);
@@ -18,13 +19,19 @@ function App() {
 
   return (
     <div className="App">
-      <MoviePlayer
-        myList={myList}
-        addToMyList={addToMyList}
-        removeFromMyList={removeFromMyList}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
+      {activeTab === "movies" || activeTab === "mylist" ? (
+        <MoviePlayer
+          myList={myList}
+          addToMyList={addToMyList}
+          removeFromMyList={removeFromMyList}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      ) : null}
+
+      {activeTab === "shows" && (
+        <TVShows setActiveTab={setActiveTab} />
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import '../App.css'
 import { User } from "lucide-react";
 import Search from "./Search";
 
-function Header({ onGoToMovies, onGoToMyList, searchTerm, setSearchTerm }) {
+function Header({ onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearchTerm }) {
   const [showAccount, setShowAccount] = useState(false);
 
   return (
@@ -16,11 +16,15 @@ function Header({ onGoToMovies, onGoToMyList, searchTerm, setSearchTerm }) {
           onGoToMovies();
           window.scrollTo(0, 0);
         }}>Movies</a>
-
+        
         <a href="#shows" onClick={(e) => {
           e.preventDefault();
-          // Add TV shows functionality here when ready
-        }}>TV Shows</a>
+          onGoToShows();
+          window.scrollTo(0, 0);
+          }}>
+            TV Shows
+            </a>
+
 
         <a href="#mylist" onClick={(e) => {
           e.preventDefault();
