@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 import Header from "./Header";
 
-function TVShows({ addToMyList, setActiveTab }) {
+function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -28,17 +28,23 @@ function TVShows({ addToMyList, setActiveTab }) {
     );
   }
 
+  const filteredShows = shows.filter((show) =>
+    show.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <main className="container">
       <Header
         onGoToMovies={() => setActiveTab("movies")}
         onGoToShows={() => setActiveTab("shows")}
         onGoToMyList={() => setActiveTab("mylist")}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
       />
 
       <h1>TV Shows</h1>
       <div className="grid">
-        {shows.map((show) => (
+        {filteredShows.map((show) => (
           <ShowCard key={show.id} show={show} addToMyList={addToMyList} />
         ))}
       </div>
