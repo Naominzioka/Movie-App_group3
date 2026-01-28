@@ -4,85 +4,40 @@
 
 .main-header {
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   padding: 3px 20px;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  border-radius: 5px;
   background: linear-gradient(to bottom, #0a1628, #1a3a5a);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav {
   display: flex;
-  align-items: center;
   gap: 30px;
 }
 
 nav a {
-  color: #9CA3AF;
-}
-
-.user-menu {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 12px;
-  background-color: #1a1a1a;
-  border-radius: 8px;
-  padding: 8px 0;
-  min-width: 150px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 12px 16px;
-  color: white;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.dropdown-menu a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
 }
 
 .container {
-  width: 100%;
-  min-height: 100vh;
-  padding: 20px;
   margin-top: 80px;
-  box-sizing: border-box;
-  color: #FFFFFF;
-}
-
-.gallery {
-  width: 100%;
-  display: block;
+  padding: 20px;
+  color: white;
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 30px;
-  padding-top: 20px;
-  width: 100%;
 }
 
 .card img {
   width: 100%;
-  height: auto;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -95,30 +50,26 @@ nav a {
   transform: scale(1.05);
 }
 
-.card h3 {
-  margin: 10px 0 5px 0;
-  font-size: 1rem;
+.list-btn {
+  margin-top: 8px;
+  width: 100%;
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background: #1a3a5a;
+  color: white;
 }
 
-.player-view {
-  padding: 20px;
-  margin-top: 40px;
-  color: white;
+.list-btn.remove {
+  background: #8a2a2a;
 }
 
 .back-button {
-  background-color: #1a3a5a;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
   margin-bottom: 20px;
-  transition: background 0.3s ease;
-}
-
-.back-button:hover {
-  background-color: #2a5a8a;
-  border-color: white;
+  padding: 10px 20px;
+  background: #1a3a5a;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
