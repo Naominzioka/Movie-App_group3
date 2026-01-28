@@ -21,14 +21,14 @@
       "API-URL": "https://archive.org/download/NightOfTheLivingDead-MPEG/Night_of_the_Living_Dead.mp4"
     },
     {
-      "id": 3,
-      "title": "Charade",
-      "year": 1963,
-      "genre": "Mystery, Romance",
-      "rating": 7.8,
-      "poster": "https://archive.org/services/img/Charade19631280x696",
-      "description": "After her husband is murdered, a woman is pursued by a group of men who believe she has the fortune he stole from them. Starring Audrey Hepburn and Cary Grant.",
-      "API-URL": "https://archive.org/download/Charade19631280x696/Charade.1963.720p.BRRip.x264.mp4"
+      "id": 6,
+      "title": "The Fast and the Furious",
+      "year": 1954,
+      "genre": "Action, Crime",
+      "rating": 5.3,
+      "poster": "https://archive.org/services/img/TheFastandtheFuriousJohnIreland1954goofyrip",
+      "description": "A man wrongly imprisoned for murder breaks out of jail and takes a beautiful woman hostage as he slips into a cross-border sports car race to escape to Mexico.",
+      "API-URL": "https://archive.org/download/TheFastandtheFuriousJohnIreland1954goofyrip/The%20Fast%20and%20the%20Furious.mp4"
     },
     {
       "id": 4,
@@ -49,6 +49,56 @@
       "poster": "https://archive.org/services/img/his_girl_friday",
       "description": "A hard-boiled newspaper editor tries to keep his ace reporter ex-wife from remarrying by entangling her in a massive story about a convicted murderer.",
       "API-URL": "https://archive.org/download/his_girl_friday/his_girl_friday.mp4"
+    },
+    {
+      "id": 7,
+      "title": "The Last Man on Earth",
+      "year": 1964,
+      "genre": "Sci-Fi, Horror",
+      "rating": 6.7,
+      "poster": "https://archive.org/services/img/the-last-man-on-earth-1964",
+      "description": "Dr. Robert Morgan is the only survivor of a devastating plague that has turned the rest of humanity into vampire-like creatures. The first and most faithful adaptation of 'I Am Legend'.",
+      "API-URL": "https://archive.org/download/the-last-man-on-earth-1964/the-last-man-on-earth-1964.mp4"
+    },
+    {
+      "id": 5,
+      "title": "Bloody Wednesday",
+      "year": 1985,
+      "genre": "Horror, Thriller",
+      "rating": 4.0,
+      "poster": "https://archive.org/services/img/BloodyWednesday",
+      "description": "An auto mechanic descends into madness after losing his job and marriage. Released from a mental hospital, he moves into an abandoned hotel where hallucinations drive him toward a violent breaking point.",
+      "API-URL": "https://archive.org/download/BloodyWednesday/BloodyWednesday.mp4"
+    },
+    {
+      "id": 6,
+      "title": "Savage Weekend",
+      "year": 1980,
+      "genre": "Horror, Slasher",
+      "rating": 4.5,
+      "poster": "https://archive.org/services/img/SavageWeekend",
+      "description": "Several couples head upstate to watch a boat being built, but their weekend getaway turns deadly when they are stalked by a masked killer. An early slasher that predates Halloween.",
+      "API-URL": "https://archive.org/download/SavageWeekend/SavageWeekend.mp4"
+    },
+    {
+      "id": 6,
+      "title": "Santa Claus Conquers the Martians",
+      "year": 1964,
+      "genre": "Sci-Fi, Comedy, Family",
+      "rating": 2.7,
+      "poster": "https://archive.org/services/img/santa-claus-conquers-the-martians-1964",
+      "description": "Martians kidnap Santa Claus and two Earth children to bring joy to the children of Mars. A cult classic known for being so bad it's good.",
+      "API-URL": "https://archive.org/download/santa-claus-conquers-the-martians-1964/santa-claus-conquers-the-martians-1964.mp4"
+    },
+    {
+      "id": 11,
+      "title": "Steamboat Bill, Jr.",
+      "year": 1928,
+      "genre": "Comedy, Action",
+      "rating": 7.8,
+      "poster": "https://archive.org/services/img/SteamboatBillJr",
+      "description": "The effete son of a rugged riverboat captain tries to prove himself to his father during a massive cyclone. Features Buster Keaton's most famous and dangerous stunt with a falling house wall.",
+      "API-URL": "https://archive.org/download/SteamboatBillJr/Steamboat_Bill_Jr.mp4"
     }
   ],
   "shows": [
