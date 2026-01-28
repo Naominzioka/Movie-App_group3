@@ -1,27 +1,38 @@
-//This TVShows component is for handling data fetching
 import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 
-function TVShows(){
-    const[shows, setShows] = useState([]); //stores the fetched TV  shows
+function TVShows() {
+  const [shows, setShows] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    //fetching shows from our api
-    useEffect(()=> {
-    fetch("http://localhost:6001/shows")
-    .then(response => response.json())
-    .then (data => setShows(data))
-}, []); //runs API call once on mount
+  useEffect(() => {
+    fetch("/db.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setShows(data.shows); // pull shows from db.json
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to load shows:", err);
+        setLoading(false);
+      });
+  }, []);
 
-    return(
-        <section style={{paddingTop: "120px", color: "white"}}>
-            <h2>TV shows</h2>
-            <p>Find your favorite TV shows in this sollection</p>
-            {shows.map(show => (
-                <ShowCard key = {show.id} show = {show} />
+  if (loading) {
+    return <h2 style={{ color: "white", marginTop: "100px" }}>Loading TV Shows...</h2>;
+  }
 
-            )
-            )}
-        </section>
-    );
+  return (
+    <main className="container">
+      <h1>TV Shows</h1>
+
+      <div className="grid">
+        {shows.map((show) => (
+          <ShowCard key={show.id} show={show} />
+        ))}
+      </div>
+    </main>
+  );
 }
+
 export default TVShows;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import Header from './Header.jsx';
 const MoviePlayer = () => {
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [data, setData] = useState({ movies: [] });
@@ -35,10 +34,7 @@ const MoviePlayer = () => {
 
     return (
         <main className="container">
-            <Header onGoToMovies={() => {
-                console.log("Parent received reset signal!");
-                setSelectedMovie(null);
-            }} />
+            
             {selectedMovie ? (
                 <div className="player-view">
                     <button className="back-button" onClick={() => setSelectedMovie(null)}>← Back</button>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../App.css";
+import '../App.css'
 import { User, Search as SearchIcon } from "lucide-react";
 
-function Header({ onGoToMovies, setPage }) {
+function Header({ onGoToMovies, onGoToShows }) {
   const [showAccount, setShowAccount] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ function Header({ onGoToMovies, setPage }) {
           href="#movies"
           onClick={(e) => {
             e.preventDefault();
-            onGoToMovies && onGoToMovies();
+            onGoToMovies();
             window.scrollTo(0, 0);
           }}
         >
@@ -25,10 +25,9 @@ function Header({ onGoToMovies, setPage }) {
           href="#shows"
           onClick={(e) => {
             e.preventDefault();
-            setPage && setPage("shows");
+            onGoToShows();
             window.scrollTo(0, 0);
           }}
-          style={{ cursor: "pointer" }}
         >
           TV Shows
         </a>
@@ -42,6 +41,7 @@ function Header({ onGoToMovies, setPage }) {
           color="white"
           onClick={() => setShowAccount(!showAccount)}
         />
+
         {showAccount && (
           <div className="dropdown-menu">
             <a href="#account">Account</a>
