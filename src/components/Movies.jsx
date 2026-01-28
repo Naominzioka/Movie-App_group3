@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
 import Header from "./Header";
+import Search from "./Search";
 
-const Movies = ({ addToMyList, setActiveTab }) => {
+const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [data, setData] = useState({ movies: [] });
   const [loading, setLoading] = useState(true);
@@ -36,12 +37,18 @@ const Movies = ({ addToMyList, setActiveTab }) => {
     );
   }
 
+  const filteredMovies = data.movies.filter((movie) =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <main className="container">
       <Header
         onGoToMovies={() => setSelectedMovie(null)}
         onGoToShows={() => setActiveTab("shows")}
         onGoToMyList={() => setActiveTab("mylist")}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
       />
 
       {selectedMovie ? (
@@ -79,7 +86,7 @@ const Movies = ({ addToMyList, setActiveTab }) => {
         <section className="gallery">
           <h1>Movies</h1>
           <div className="grid">
-            {data.movies.map((movie) => (
+            {filteredMovies.map((movie) => (
               <div key={movie.id} className="card">
                 <img
                   src={movie.poster}

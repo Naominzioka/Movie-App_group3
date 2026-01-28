@@ -27,7 +27,7 @@ const MyList = ({ myList, removeFromMyList, onBack }) => {
               <div className="card-meta">
                 <h3>{item.title}</h3>
                 {/* Optional: show type */}
-                <p style={{ fontSize: "0.9em", color: "#aaa" }}>
+                <p style={{ fontSize: "0.9em", color: "white" }}>
                   {item.type === "show" ? "TV Show" : "Movie"}
                 </p>
 

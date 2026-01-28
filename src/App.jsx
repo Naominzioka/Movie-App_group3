@@ -7,7 +7,7 @@ import MyList from "./components/MyList";
 function App() {
   const [activeTab, setActiveTab] = useState("movies");
   const [myList, setMyList] = useState([]);
-
+  const [searchTerm, setSearchTerm] = useState("");
   // Add item to My List (movies or TV shows)
   const addToMyList = (item) => {
     setMyList((prevList) => {
@@ -26,6 +26,8 @@ function App() {
     <>
       {activeTab === "movies" && (
         <Movies
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
           setActiveTab={setActiveTab}
           addToMyList={addToMyList}
         />
@@ -33,6 +35,8 @@ function App() {
 
       {activeTab === "shows" && (
         <TVShows
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
           setActiveTab={setActiveTab}
           addToMyList={addToMyList}
         />
@@ -42,7 +46,7 @@ function App() {
         <MyList
           myList={myList}
           removeFromMyList={removeFromMyList}
-          setActiveTab={setActiveTab}
+          onBack={() => setActiveTab("movies")}
         />
       )}
     </>
