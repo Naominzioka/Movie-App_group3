@@ -72,6 +72,10 @@ const MoviePlayer = ({
           setActiveTab("mylist");
           setSelectedMovie(null);
         }}
+        onGoToShows={() => {
+            setActiveTab("shows");
+            setSelectedMovie(null);
+          }}
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
