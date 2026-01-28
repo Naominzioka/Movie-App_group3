@@ -21,7 +21,7 @@
       "API-URL": "https://archive.org/download/NightOfTheLivingDead-MPEG/Night_of_the_Living_Dead.mp4"
     },
     {
-      "id": 6,
+      "id": 3,
       "title": "The Fast and the Furious",
       "year": 1954,
       "genre": "Action, Crime",
@@ -51,7 +51,7 @@
       "API-URL": "https://archive.org/download/his_girl_friday/his_girl_friday.mp4"
     },
     {
-      "id": 7,
+      "id": 6,
       "title": "The Last Man on Earth",
       "year": 1964,
       "genre": "Sci-Fi, Horror",
@@ -61,7 +61,7 @@
       "API-URL": "https://archive.org/download/the-last-man-on-earth-1964/the-last-man-on-earth-1964.mp4"
     },
     {
-      "id": 5,
+      "id": 7,
       "title": "Bloody Wednesday",
       "year": 1985,
       "genre": "Horror, Thriller",
@@ -71,7 +71,7 @@
       "API-URL": "https://archive.org/download/BloodyWednesday/BloodyWednesday.mp4"
     },
     {
-      "id": 6,
+      "id": 8,
       "title": "Savage Weekend",
       "year": 1980,
       "genre": "Horror, Slasher",
@@ -81,7 +81,7 @@
       "API-URL": "https://archive.org/download/SavageWeekend/SavageWeekend.mp4"
     },
     {
-      "id": 6,
+      "id": 9,
       "title": "Santa Claus Conquers the Martians",
       "year": 1964,
       "genre": "Sci-Fi, Comedy, Family",
@@ -91,7 +91,7 @@
       "API-URL": "https://archive.org/download/santa-claus-conquers-the-martians-1964/santa-claus-conquers-the-martians-1964.mp4"
     },
     {
-      "id": 11,
+      "id": 10,
       "title": "Steamboat Bill, Jr.",
       "year": 1928,
       "genre": "Comedy, Action",
@@ -104,29 +104,86 @@
   "shows": [
     {
       "id": 11,
-      "title": "The Dick Van Dyke Show",
-      "year": 1961,
-      "genre": "Comedy, Sitcom",
-      "rating": 8.3,
-      "poster": "https://archive.org/services/img/dickvandyke",
-      "description": "A classic sitcom following the work and home life of television comedy writer Rob Petrie.",
+      "title": "Sherlock (BBC)",
+      "year": 2010,
+      "genre": "Crime, Mystery",
+      "rating": 9.1,
+      "poster": "https://archive.org/services/img/BBC_Sherlock2010",
+      "description": "A modern update finds the famous sleuth and his doctor partner solving crime in 21st century London.",
       "episodes": [
         {
-          "name": "The Sick Boy and the Sitter",
-          "url": "https://archive.org/download/dickvandyke/The_Dick_Van_Dyke_Show_S01E01.mp4"
+          "name": "S01E01 - A Study in Pink",
+          "url": "https://archive.org/download/BBC_Sherlock2010/1x01%20A%20Study%20in%20Pink.mp4"
         },
         {
-          "name": "My Blonde-Haired Brunette",
-          "url": "https://archive.org/download/dickvandyke/The_Dick_Van_Dyke_Show_S01E02.mp4"
+          "name": "S01E02 - The Blind Banker",
+          "url": "https://archive.org/download/BBC_Sherlock2010/1x02%20The%20Blind%20Banker.mp4"
         },
         {
-          "name": "The Man on the Couch",
-          "url": "https://archive.org/download/dickvandyke/The_Dick_Van_Dyke_Show_S01E03.mp4"
+          "name": "S01E03 - The Great Game",
+          "url": "https://archive.org/download/BBC_Sherlock2010/1x03%20The%20Great%20Game.mp4"
         }
       ]
     },
     {
       "id": 12,
+      "title": "Panty & Stocking with Garterbelt",
+      "year": 2010,
+      "genre": "Animation, Action, Comedy",
+      "rating": 7.5,
+      "poster": "https://archive.org/services/img/panty-and-stocking",
+      "description": "Two angels are kicked out of heaven for bad behavior and must destroy ghosts in Daten City to earn their way back.",
+      "episodes": [
+        {
+          "name": "E01 - Excretion Without Honor and Humanity",
+          "url": "https://archive.org/download/panty-and-stocking/1.%20Excretion%20Without%20Honor%20and%20Humanity%20and%20Death%20Race%202010.mp4"
+        },
+        {
+          "name": "E02 - The Turmoil of the Beehive",
+          "url": "https://archive.org/download/panty-and-stocking/2.%20The%20Turmoil%20of%20the%20Beehive%20and%20Sex%20and%20the%20Daten%20City.mp4"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Life Goes On",
+      "year": 2023,
+      "genre": "Drama",
+      "rating": 7.5,
+      "poster": "https://archive.org/services/img/life-goes-on-complete-tv-series",
+      "description": "The Thacher family navigates life's challenges in this modern archival restoration of the classic drama.",
+      "episodes": [
+        {
+          "name": "S01E01 - Pilot",
+          "url": "https://archive.org/download/life-goes-on-complete-tv-series/Life%20Goes%20On%20S01E01%20Pilot.mp4"
+        },
+        {
+          "name": "S01E02 - Corky for President",
+          "url": "https://archive.org/download/life-goes-on-complete-tv-series/Life%20Goes%20On%20S01E02%20Corky%20for%20President.mp4"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Hey Duggee's Squirrel Club",
+      "year": 2023,
+      "genre": "Animation, Kids",
+      "rating": 8.0,
+      "poster": "https://archive.org/services/img/img-3690",
+      "description": "Modern animated adventures featuring the beloved Squirrel Club.",
+      "episodes": [
+        {
+          "name": "S01E01 - Squirrel Club",
+          "url": "https://archive.org/download/img-3690/Hey%20Duggee%27s%20Squirrel%20Club%20S01E01.mp4"
+        },
+        {
+          "name": "S01E06 - Potato Time",
+          "url": "https://archive.org/download/img-3690/Hey%20Duggee%27s%20Squirrel%20Club%20S01E06%20Potato%20Time.mp4"
+        }
+      ]
+    },
+    {
+      "id": 15,
       "title": "Dragnet",
       "year": 1951,
       "genre": "Crime, Drama",
@@ -149,71 +206,95 @@
       ]
     },
     {
-      "id": 13,
-      "title": "One Step Beyond",
-      "year": 1959,
-      "genre": "Sci-Fi, Mystery",
-      "rating": 7.9,
-      "poster": "https://archive.org/services/img/one_step_beyond",
-      "description": "An anthology series focused on the paranormal and psychic phenomena.",
-      "episodes": [
-        {
-          "name": "The Bride Possessed",
-          "url": "https://archive.org/download/one_step_beyond/One_Step_Beyond_S01E01.mp4"
-        },
-        {
-          "name": "Night of April 14th",
-          "url": "https://archive.org/download/one_step_beyond/One_Step_Beyond_S01E02.mp4"
-        },
-        {
-          "name": "Emergency Only",
-          "url": "https://archive.org/download/one_step_beyond/One_Step_Beyond_S01E03.mp4"
-        }
-      ]
-    },
-    {
-      "id": 14,
-      "title": "The Beverly Hillbillies",
-      "year": 1962,
+      "id": 16,
+      "title": "Fawlty Towers",
+      "year": 1975,
       "genre": "Comedy",
-      "rating": 7.2,
-      "poster": "https://archive.org/services/img/beverlyhillbillies",
-      "description": "A poor backwoods family strikes oil and moves to the posh neighborhood of Beverly Hills.",
+      "rating": 8.8,
+      "poster": "https://archive.org/services/img/FawltyTowers",
+      "description": "Chaos at a seaside hotel run by the high-strung Basil Fawlty.",
       "episodes": [
         {
-          "name": "The Clampetts Strike Oil",
-          "url": "https://archive.org/download/beverlyhillbillies/Beverly_Hillbillies_S01E01.mp4"
+          "name": "S1E1 - A Touch of Class",
+          "url": "https://archive.org/download/FawltyTowers/S1E1.A%20Touch%20of%20Class.mp4"
         },
         {
-          "name": "Getting Settled",
-          "url": "https://archive.org/download/beverlyhillbillies/Beverly_Hillbillies_S01E02.mp4"
+          "name": "S1E2 - The Builders",
+          "url": "https://archive.org/download/FawltyTowers/S1E2.The%20Builders.mp4"
         },
         {
-          "name": "Meanwhile Back at the Cabin",
-          "url": "https://archive.org/download/beverlyhillbillies/Beverly_Hillbillies_S01E03.mp4"
+          "name": "S1E3 - The Wedding Party",
+          "url": "https://archive.org/download/FawltyTowers/S1E3.The%20Wedding%20Party.mp4"
+        },
+        {
+          "name": "S1E4 - The Hotel Inspectors",
+          "url": "https://archive.org/download/FawltyTowers/S1E4.The%20Hotel%20Inspectors.mp4"
+        },
+        {
+          "name": "S1E5 - Gourmet Night",
+          "url": "https://archive.org/download/FawltyTowers/S1E5.Gourmet%20Night.mp4"
+        },
+        {
+          "name": "S1E6 - The Germans",
+          "url": "https://archive.org/download/FawltyTowers/S1E6.The%20Germans.mp4"
         }
       ]
     },
     {
-      "id": 15,
-      "title": "Bonanza",
-      "year": 1959,
-      "genre": "Western",
-      "rating": 7.3,
-      "poster": "https://archive.org/services/img/bonanza",
-      "description": "The adventures of the Cartwright family on their massive ranch, the Ponderosa.",
+      "id": 17,
+      "title": "Logan's Run",
+      "year": 1977,
+      "genre": "Sci-Fi, Adventure",
+      "rating": 7.0,
+      "poster": "https://archive.org/services/img/logans-run-complete-series-1977",
+      "description": "Runners flee a society where life ends at 30.",
       "episodes": [
         {
-          "name": "A Rose for Lotta",
-          "url": "https://archive.org/download/bonanza/Bonanza_S01E01.mp4"
+          "name": "01 - Pilot",
+          "url": "https://archive.org/download/logans-run-complete-series-1977/Logan%27s%20Run%2001%20Pilot.mp4"
         },
         {
-          "name": "The Sun Mountain Herd",
-          "url": "https://archive.org/download/bonanza/Bonanza_S01E02.mp4"
+          "name": "02 - The Collectors",
+          "url": "https://archive.org/download/logans-run-complete-series-1977/Logan%27s%20Run%2002%20The%20Collectors.mp4"
         },
         {
-          "name": "The Newcomers",
-          "url": "https://archive.org/download/bonanza/Bonanza_S01E03.mp4"
+          "name": "03 - Capture",
+          "url": "https://archive.org/download/logans-run-complete-series-1977/Logan%27s%20Run%2003%20Capture.mp4"
+        },
+        {
+          "name": "04 - The Innocent",
+          "url": "https://archive.org/download/logans-run-complete-series-1977/Logan%27s%20Run%2004%20The%20Innocent.mp4"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "title": "The Prisoner",
+      "year": 1967,
+      "genre": "Sci-Fi, Mystery",
+      "rating": 8.6,
+      "poster": "https://archive.org/services/img/The_Prisoner",
+      "description": "A secret agent is held captive in a mysterious village.",
+      "episodes": [
+        {
+          "name": "01 Arrival",
+          "url": "https://archive.org/download/The_Prisoner/The%20Prisoner%2001%20Arrival.mp4"
+        },
+        {
+          "name": "02 The Chimes of Big Ben",
+          "url": "https://archive.org/download/The_Prisoner/The%20Prisoner%2002%20The%20Chimes%20Of%20Big%20Ben.mp4"
+        },
+        {
+          "name": "03 A. B. and C.",
+          "url": "https://archive.org/download/The_Prisoner/The%20Prisoner%2003%20A.B.And.C.mp4"
+        },
+        {
+          "name": "04 Free For All",
+          "url": "https://archive.org/download/The_Prisoner/The%20Prisoner%2004%20Free%20For%20All.mp4"
+        },
+        {
+          "name": "05 The Schizoid Man",
+          "url": "https://archive.org/download/The_Prisoner/The%20Prisoner%2005%20The%20Schizoid%20Man.mp4"
         }
       ]
     }
