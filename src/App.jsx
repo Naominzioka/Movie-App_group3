@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
-import './App.css';
-
-import MoviePlayer from './components/Movies';
-import Header from './components/Header';
-import TVShows from './components/TvShows';
+import React, { useState } from "react";
+import "./App.css";
+import MoviePlayer from "./components/Movies";
 
 function App() {
-  // This controls which page we are on
-  const [page, setPage] = useState("movies");
+  const [myList, setMyList] = useState([]);
+  const [activeTab, setActiveTab] = useState("movies");
+
+  const addToMyList = (movie) => {
+    setMyList((prev) =>
+      prev.find((m) => m.id === movie.id) ? prev : [...prev, movie]
+    );
+  };
+
+  const removeFromMyList = (id) => {
+    setMyList((prev) => prev.filter((m) => m.id !== id));
+  };
 
   return (
-    <>
-      {/* Header controls navigation */}
-      <Header
-        onGoToMovies={() => setPage("movies")}
-        onGoToShows={() => setPage("shows")}
+    <div className="App">
+      <MoviePlayer
+        myList={myList}
+        addToMyList={addToMyList}
+        removeFromMyList={removeFromMyList}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
       />
-
-      {/* Conditional rendering */}
-      {page === "movies" && <MoviePlayer />}
-      {page === "shows" && <TVShows />}
-    </>
+    </div>
   );
 }
 

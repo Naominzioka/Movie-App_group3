@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import '../App.css'
-import { User, Search as SearchIcon } from "lucide-react";
+import "../App.css";
+import { User } from "lucide-react";
 
-function Header({ onGoToMovies, onGoToShows }) {
+function Header({ onGoToMovies, onGoToMyList }) {
   const [showAccount, setShowAccount] = useState(false);
 
   return (
@@ -22,17 +22,15 @@ function Header({ onGoToMovies, onGoToShows }) {
         </a>
 
         <a
-          href="#shows"
+          href="#mylist"
           onClick={(e) => {
             e.preventDefault();
-            onGoToShows();
+            onGoToMyList();
             window.scrollTo(0, 0);
           }}
         >
-          TV Shows
+          My List
         </a>
-
-        <a href="#list">My List</a>
       </nav>
 
       <div className="user-menu">
@@ -48,15 +46,6 @@ function Header({ onGoToMovies, onGoToShows }) {
             <a href="#settings">Settings</a>
           </div>
         )}
-      </div>
-
-      <div className="search-wrapper">
-        <SearchIcon className="search-icon-inside" size={18} />
-        <input
-          type="text"
-          placeholder="Search movies, shows..."
-          className="search-input-field"
-        />
       </div>
     </header>
   );
