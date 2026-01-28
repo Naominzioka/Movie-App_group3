@@ -1,38 +1,51 @@
-import React, { useState } from 'react';
-import './App.css';
-import MoviePlayer from './components/Movies';
-import TVShows from './components/TVShows';
+import React, { useState } from "react";
+import "./App.css";
+import Movies from "./components/Movies";
+import TVShows from "./components/TVShows";
+import MyList from "./components/MyList";
 
 function App() {
-  const [myList, setMyList] = useState([]);
   const [activeTab, setActiveTab] = useState("movies");
+  const [myList, setMyList] = useState([]);
 
-  const addToMyList = (movie) => {
-    setMyList((prev) =>
-      prev.find((m) => m.id === movie.id) ? prev : [...prev, movie]
-    );
+  // Add item to My List (movies or TV shows)
+  const addToMyList = (item) => {
+    setMyList((prevList) => {
+      const exists = prevList.some((i) => i.id === item.id);
+      if (exists) return prevList;
+      return [...prevList, item];
+    });
   };
 
+  // Remove item from My List
   const removeFromMyList = (id) => {
-    setMyList((prev) => prev.filter((m) => m.id !== id));
+    setMyList((prevList) => prevList.filter((item) => item.id !== id));
   };
 
   return (
-    <div className="App">
-      {activeTab === "movies" || activeTab === "mylist" ? (
-        <MoviePlayer
-          myList={myList}
-          addToMyList={addToMyList}
-          removeFromMyList={removeFromMyList}
-          activeTab={activeTab}
+    <>
+      {activeTab === "movies" && (
+        <Movies
           setActiveTab={setActiveTab}
+          addToMyList={addToMyList}
         />
-      ) : null}
+      )}
 
       {activeTab === "shows" && (
-        <TVShows setActiveTab={setActiveTab} />
+        <TVShows
+          setActiveTab={setActiveTab}
+          addToMyList={addToMyList}
+        />
       )}
-    </div>
+
+      {activeTab === "mylist" && (
+        <MyList
+          myList={myList}
+          removeFromMyList={removeFromMyList}
+          setActiveTab={setActiveTab}
+        />
+      )}
+    </>
   );
 }
 
