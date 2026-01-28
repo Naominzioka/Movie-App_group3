@@ -29,8 +29,46 @@ function Header({ onGoToMovies, searchTerm, setSearchTerm }) {
             <Search  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
 
+      <nav>
+        <a
+          href="#movies"
+          onClick={(e) => {
+            e.preventDefault();
+            onGoToMovies();
+            window.scrollTo(0, 0);
+          }}
+        >
+          Movies
+        </a>
 
-    )
+        <a
+          href="#mylist"
+          onClick={(e) => {
+            e.preventDefault();
+            onGoToMyList();
+            window.scrollTo(0, 0);
+          }}
+        >
+          My List
+        </a>
+      </nav>
+
+      <div className="user-menu">
+        <User
+          size={25}
+          color="white"
+          onClick={() => setShowAccount(!showAccount)}
+        />
+
+        {showAccount && (
+          <div className="dropdown-menu">
+            <a href="#account">Account</a>
+            <a href="#settings">Settings</a>
+          </div>
+        )}
+      </div>
+    </header>
+  );
 }
 
 export default Header;
