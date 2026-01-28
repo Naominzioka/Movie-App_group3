@@ -2,37 +2,32 @@ import React, { useState, useEffect } from 'react';
 import '../App.css';
 import Header from './Header.jsx';
 
-const MoviePlayer = () => {
-    const [selectedMovie, setSelectedMovie] = useState(null);
-    const [data, setData] = useState({ movies: [] });
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    const [searchTerm, setSearchTerm] = useState("")
-    const filteredMovies = data.movies.filter(movie =>
-        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-
-
-    useEffect(() => {
-        fetch('/db.json')
-            .then(res => res.json())
-            .then(jsonData => {
-                setData(jsonData);
-                setLoading(false);
-            })
-            .catch(err => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, []);
+const MoviePlayer = ({
+  myList,
+  addToMyList,
+  removeFromMyList,
+  activeTab,
+  setActiveTab,
+}) => {
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [data, setData] = useState({ movies: [] });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("/db.json")
       .then((res) => res.json())
       .then((jsonData) => {
-        setData(jsonData);
+        // Remove duplicates from the loaded data
+        const uniqueMovies = jsonData.movies.reduce((acc, movie) => {
+          if (!acc.find(m => m.id === movie.id)) {
+            acc.push(movie);
+          }
+          return acc;
+        }, []);
+
+        setData({ ...jsonData, movies: uniqueMovies });
         setLoading(false);
       })
       .catch((err) => {
@@ -42,22 +37,54 @@ const MoviePlayer = () => {
   }, []);
 
   const getArchiveIdentifier = (url) => {
-    const match = url.match(/archive\.org\/download\/([^\/]+)/);
+    const match = url?.match(/archive\.org\/download\/([^\/]+)/);
     return match ? match[1] : null;
   };
 
+  // Filter movies based on search term
+  const filteredMovies = data.movies.filter(movie =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Filter myList based on search term
+  const filteredMyList = myList.filter(movie =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   if (loading || error) {
     return (
-        <main className="container">
-            <Header searchTerm={searchTerm} //pass search state as props so header and search can access data defined here
-                setSearchTerm={setSearchTerm}
-                onGoToMovies={() => {
-                    console.log("Parent received reset signal!");
-                    setSelectedMovie(null);
-                }} />
-            {selectedMovie ? (
-                <div className="player-view">
-                    <button className="back-button" onClick={() => setSelectedMovie(null)}>← Back</button>
+      <div className="status-screen">
+        <h2>{loading ? "Loading movies..." : `Error: ${error}`}</h2>
+      </div>
+    );
+  }
+
+  return (
+    <main className="container">
+      <Header
+        onGoToMovies={() => {
+          setActiveTab("movies");
+          setSelectedMovie(null);
+        }}
+        onGoToMyList={() => {
+          setActiveTab("mylist");
+          setSelectedMovie(null);
+        }}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
+
+      {/*  PLAYER VIEW  */}
+      {selectedMovie ? (
+        <div className="player-view">
+          <button
+            className="back-button"
+            onClick={() => setSelectedMovie(null)}
+          >
+            ← Back
+          </button>
 
           <div className="video-box">
             <iframe
@@ -82,47 +109,83 @@ const MoviePlayer = () => {
           </div>
         </div>
       ) : activeTab === "movies" ? (
-        /* ================= MOVIES TAB ================= */
+        /*  MOVIES TAB  */
         <section className="gallery">
           <h1>Movies</h1>
-          <div className="grid">
-            {data.movies.map((movie) => (
-              <div key={movie.id} className="card">
-                <img
-                  src={movie.poster}
-                  alt={movie.title}
-                  onClick={() => setSelectedMovie(movie)}
-                />
+          {filteredMovies.length === 0 ? (
+            <p>No movies found matching "{searchTerm}"</p>
+          ) : (
+            <div className="grid">
+              {filteredMovies.map((movie) => (
+                <div key={movie.id} className="card">
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    onClick={() => setSelectedMovie(movie)}
+                  />
 
-                <div className="card-meta">
-                  <h3>{movie.title}</h3>
-                  <span>{movie.rating} ⭐</span>
+                  <div className="card-meta">
+                    <h3>{movie.title}</h3>
+                    <span>{movie.rating} ⭐</span>
 
-                  <button
-                    className="list-btn"
-                    onClick={() => addToMyList(movie)}
-                  >
-                    + My List
-                  </button>
+                    <button
+                      className="list-btn"
+                      onClick={() => addToMyList(movie)}
+                      disabled={myList.find(m => m.id === movie.id)}
+                    >
+                      {myList.find(m => m.id === movie.id) ? '✓ In List' : '+ My List'}
+                    </button>
+                  </div>
                 </div>
-            ) : (
-                <section className="gallery">
-                    <h1>Movies</h1>
-                    <div className="grid">
-                        {filteredMovies.map((movie) => (
-                            <div key={movie.id} className="card" onClick={() => setSelectedMovie(movie)}>
-                                <img src={movie.poster} alt={movie.title} />
-                                <div className="card-meta">
-                                    <h3>{movie.title}</h3>
-                                    <span>{movie.rating} ⭐</span>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            )}
-        </main>
-    );
+              ))}
+            </div>
+          )}
+        </section>
+      ) : (
+        /*  MY LIST TAB  */
+        <section className="gallery">
+          <button
+            className="back-button"
+            style={{ marginBottom: "20px" }}
+            onClick={() => setActiveTab("movies")}
+          >
+            ← Back to Movies
+          </button>
+
+          <h1>My List</h1>
+
+          {myList.length === 0 ? (
+            <p>No movies added yet.</p>
+          ) : filteredMyList.length === 0 ? (
+            <p>No movies in your list match "{searchTerm}"</p>
+          ) : (
+            <div className="grid">
+              {filteredMyList.map((movie) => (
+                <div key={movie.id} className="card">
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    onClick={() => setSelectedMovie(movie)}
+                  />
+
+                  <div className="card-meta">
+                    <h3>{movie.title}</h3>
+
+                    <button
+                      className="list-btn remove"
+                      onClick={() => removeFromMyList(movie.id)}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
+    </main>
+  );
 };
 
 export default MoviePlayer;
