@@ -12,12 +12,14 @@ function App() {
   return (
     <>
       {/* Header controls navigation */}
+      {/*Header stays on App*/}
       <Header
         onGoToMovies={() => setPage("movies")}
         onGoToShows={() => setPage("shows")}
       />
 
       {/* Conditional rendering */}
+      {/*Mylist can also be added*/}
       {page === "movies" && <MoviePlayer />}
       {page === "shows" && <TVShows />}
     </>
