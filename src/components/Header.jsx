@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import '../App.css'
-import { User, Search as SearchIcon } from "lucide-react";
+import { User} from "lucide-react";
+import Search from "./Search";
 
-function Header({ onGoToMovies }) {
+function Header({ onGoToMovies, searchTerm, setSearchTerm }) {
     const [showAccount, setShowAccount] = useState(false);
     return (
         <header className="main-header">
@@ -25,15 +26,7 @@ function Header({ onGoToMovies }) {
                     </div>
                 ) : null}
             </div>
-            <div className="search-wrapper">
-                <SearchIcon className="search-icon-inside" size={18} />
-                <input
-                    type="text"
-                    placeholder="Search movies, shows..."
-                    className="search-input-field"
-                />
-            </div>
-
+            <Search  searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
         </header>
 
 
@@ -41,3 +34,4 @@ function Header({ onGoToMovies }) {
 }
 
 export default Header;
+

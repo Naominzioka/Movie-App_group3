@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import Header from './Header.jsx';
+
 const MoviePlayer = () => {
     const [selectedMovie, setSelectedMovie] = useState(null);
     const [data, setData] = useState({ movies: [] });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [searchTerm, setSearchTerm] = useState("")
+    const filteredMovies = data.movies.filter(movie =>
+        movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+
 
     useEffect(() => {
         fetch('/db.json')
@@ -35,10 +43,12 @@ const MoviePlayer = () => {
 
     return (
         <main className="container">
-            <Header onGoToMovies={() => {
-                console.log("Parent received reset signal!");
-                setSelectedMovie(null);
-            }} />
+            <Header searchTerm={searchTerm} //pass search state as props so header and search can access data defined here
+                setSearchTerm={setSearchTerm}
+                onGoToMovies={() => {
+                    console.log("Parent received reset signal!");
+                    setSelectedMovie(null);
+                }} />
             {selectedMovie ? (
                 <div className="player-view">
                     <button className="back-button" onClick={() => setSelectedMovie(null)}>← Back</button>
@@ -66,7 +76,7 @@ const MoviePlayer = () => {
                 <section className="gallery">
                     <h1>Movies</h1>
                     <div className="grid">
-                        {data.movies.map((movie) => (
+                        {filteredMovies.map((movie) => (
                             <div key={movie.id} className="card" onClick={() => setSelectedMovie(movie)}>
                                 <img src={movie.poster} alt={movie.title} />
                                 <div className="card-meta">
