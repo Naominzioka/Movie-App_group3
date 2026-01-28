@@ -1,19 +1,13 @@
 import React from 'react';
-import Header from './components/Header';
-import TVShows from './components/TvShows';
-import { useState } from 'react'
 import './App.css'
-
+import MoviePlayer from './components/Movies';
 
 function App() {
- const[page, setPage] = useState("home");
-
   return (
-    <>
-      <Header setPage ={setPage}/>
-      {page === "shows" && <TVShows />}
-    </>
-  )
+    <div className="App">
+      <MoviePlayer />
+    </div>
+  );
 }
 
-export default App
+export default App;
