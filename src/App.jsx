@@ -35,8 +35,8 @@ function App() {
 
       {activeTab === "shows" && (
         <TVShows
-          searchTerm={searchTerm} 
-          setSearchTerm={setSearchTerm} 
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
           setActiveTab={setActiveTab}
           addToMyList={addToMyList}
         />
@@ -46,7 +46,7 @@ function App() {
         <MyList
           myList={myList}
           removeFromMyList={removeFromMyList}
-          setActiveTab={setActiveTab}
+          onBack={() => setActiveTab("movies")}
         />
       )}
     </>
