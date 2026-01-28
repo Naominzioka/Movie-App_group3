@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css'
 import MoviePlayer from './components/Movies';
 
-
 function App() {
   const [myList, setMyList] = useState([]);
   const [activeTab, setActiveTab] = useState("movies");
@@ -19,8 +18,13 @@ function App() {
 
   return (
     <div className="App">
-      <MoviePlayer />
-    
+      <MoviePlayer
+        myList={myList}
+        addToMyList={addToMyList}
+        removeFromMyList={removeFromMyList}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
     </div>
   );
 }

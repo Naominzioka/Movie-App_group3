@@ -13,12 +13,21 @@ const MoviePlayer = ({
   const [data, setData] = useState({ movies: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("/db.json")
       .then((res) => res.json())
       .then((jsonData) => {
-        setData(jsonData);
+        // Remove duplicates from the loaded data
+        const uniqueMovies = jsonData.movies.reduce((acc, movie) => {
+          if (!acc.find(m => m.id === movie.id)) {
+            acc.push(movie);
+          }
+          return acc;
+        }, []);
+
+        setData({ ...jsonData, movies: uniqueMovies });
         setLoading(false);
       })
       .catch((err) => {
@@ -27,10 +36,22 @@ const MoviePlayer = ({
       });
   }, []);
 
-    const getArchiveIdentifier = (url) => {
-        const match = url?.match(/archive\.org\/download\/([^\/]+)/);
-        return match ? match[1] : null;
-    };
+  const getArchiveIdentifier = (url) => {
+    const match = url?.match(/archive\.org\/download\/([^\/]+)/);
+    return match ? match[1] : null;
+  };
+
+  // Filter movies based on search term
+  const filteredMovies = data.movies.filter(movie =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Filter myList based on search term
+  const filteredMyList = myList.filter(movie =>
+    movie.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    movie.genre.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading || error) {
     return (
@@ -51,9 +72,11 @@ const MoviePlayer = ({
           setActiveTab("mylist");
           setSelectedMovie(null);
         }}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
       />
 
-      {/* ================= PLAYER VIEW ================= */}
+      {/*  PLAYER VIEW  */}
       {selectedMovie ? (
         <div className="player-view">
           <button
@@ -86,37 +109,41 @@ const MoviePlayer = ({
           </div>
         </div>
       ) : activeTab === "movies" ? (
-        /* ================= MOVIES TAB ================= */
+        /*  MOVIES TAB  */
         <section className="gallery">
           <h1>Movies</h1>
-          <div className="grid">
-            {data.movies.map((movie) => (
-              <div key={movie.id} className="card">
-                <img
-                  src={movie.poster}
-                  alt={movie.title}
-                  onClick={() => setSelectedMovie(movie)}
-                />
+          {filteredMovies.length === 0 ? (
+            <p>No movies found matching "{searchTerm}"</p>
+          ) : (
+            <div className="grid">
+              {filteredMovies.map((movie) => (
+                <div key={movie.id} className="card">
+                  <img
+                    src={movie.poster}
+                    alt={movie.title}
+                    onClick={() => setSelectedMovie(movie)}
+                  />
 
-                <div className="card-meta">
-                  <h3>{movie.title}</h3>
-                  <span>{movie.rating} ⭐</span>
+                  <div className="card-meta">
+                    <h3>{movie.title}</h3>
+                    <span>{movie.rating} ⭐</span>
 
-                  <button
-                    className="list-btn"
-                    onClick={() => addToMyList(movie)}
-                  >
-                    + My List
-                  </button>
+                    <button
+                      className="list-btn"
+                      onClick={() => addToMyList(movie)}
+                      disabled={myList.find(m => m.id === movie.id)}
+                    >
+                      {myList.find(m => m.id === movie.id) ? '✓ In List' : '+ My List'}
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </section>
       ) : (
-        /* ================= MY LIST TAB ================= */
+        /*  MY LIST TAB  */
         <section className="gallery">
-          {/* Back button here */}
           <button
             className="back-button"
             style={{ marginBottom: "20px" }}
@@ -129,9 +156,11 @@ const MoviePlayer = ({
 
           {myList.length === 0 ? (
             <p>No movies added yet.</p>
+          ) : filteredMyList.length === 0 ? (
+            <p>No movies in your list match "{searchTerm}"</p>
           ) : (
             <div className="grid">
-              {myList.map((movie) => (
+              {filteredMyList.map((movie) => (
                 <div key={movie.id} className="card">
                   <img
                     src={movie.poster}
