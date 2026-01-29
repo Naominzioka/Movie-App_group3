@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../App.css";
 import useFetchData from "../Hooks/useFetchData"
 
-const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm , myList}) => {
+const Movies = ({ addToMyList, searchTerm , myList}) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const {data, loading, error} = useFetchData("/db.json");
 
