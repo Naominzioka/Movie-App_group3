@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 import Header from "./Header";
 
-function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) {
+function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm, myList }) {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -39,7 +39,7 @@ function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) {
       <h1>TV Shows</h1>
       <div className="grid">
         {filteredShows.map((show) => (
-          <ShowCard key={show.id} show={show} addToMyList={addToMyList} />
+          <ShowCard key={show.id} show={show} addToMyList={addToMyList} myList={myList}/>
         ))}
       </div>
     </main>

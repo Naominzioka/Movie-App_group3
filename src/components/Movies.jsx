@@ -3,7 +3,7 @@ import "../App.css";
 import Header from "./Header";
 import Search from "./Search";
 
-const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
+const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm , myList}) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [data, setData] = useState({ movies: [] });
   const [loading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
 
   return (
     <main className="container">
-      
+
 
       {selectedMovie ? (
         <div className="player-view">
@@ -92,9 +92,13 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
                   <span>{movie.rating} ⭐</span>
                   <button
                     className="list-btn"
+                    style={{
+                      backgroundColor: myList.some((i) => i.id === movie.id) ? "#eb2b1dff" : "#1a3a5a", // green if added
+                    }}
                     onClick={() => addToMyList({ ...movie, type: "movie" })}
                   >
-                    + My List
+
+                    {myList.some((i) => i.id === movie.id) ? "Added" : "+ My List"}
                   </button>
                 </div>
               </div>
