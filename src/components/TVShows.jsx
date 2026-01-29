@@ -34,13 +34,7 @@ function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) {
 
   return (
     <main className="container">
-      <Header
-        onGoToMovies={() => setActiveTab("movies")}
-        onGoToShows={() => setActiveTab("shows")}
-        onGoToMyList={() => setActiveTab("mylist")}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+     
 
       <h1>TV Shows</h1>
       <div className="grid">
