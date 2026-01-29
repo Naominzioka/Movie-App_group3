@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+
 import ShowCard from "./ShowCard";
 import useFetchData from "../Hooks/useFetchData";
 import "../App.css";
-import Header from "./Header";
 
-function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm, myList }) {
+function TVShows({ addToMyList, searchTerm, myList }) {
   const { data, loading, error } = useFetchData("/db.json");
 
   if (loading || error) {
