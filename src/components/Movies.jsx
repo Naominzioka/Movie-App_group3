@@ -43,13 +43,7 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
 
   return (
     <main className="container">
-      <Header
-        onGoToMovies={() => setSelectedMovie(null)}
-        onGoToShows={() => setActiveTab("shows")}
-        onGoToMyList={() => setActiveTab("mylist")}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+      
 
       {selectedMovie ? (
         <div className="player-view">

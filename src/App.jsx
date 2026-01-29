@@ -3,6 +3,7 @@ import "./App.css";
 import Movies from "./components/Movies";
 import TVShows from "./components/TVShows";
 import MyList from "./components/MyList";
+import Header from "./components/Header";
 
 function App() {
   const [activeTab, setActiveTab] = useState("movies");
@@ -23,7 +24,15 @@ function App() {
   };
 
   return (
+
     <>
+    <Header
+        onGoToMovies={() => setActiveTab("movies")}
+        onGoToShows={() => setActiveTab("shows")}
+        onGoToMyList={() => setActiveTab("mylist")}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
       {activeTab === "movies" && (
         <Movies
           searchTerm={searchTerm}
