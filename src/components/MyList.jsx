@@ -3,12 +3,14 @@ import "../App.css";
 
 const MyList = ({ myList, removeFromMyList, onBack }) => {
   return (
-    <section className="gallery">
+    <section className="gallery" style={{marginTop: "60px"}}>
       {/* Back button */}
       <button
         className="back-button"
-        style={{ marginBottom: "20px" }}
-        onClick={onBack}
+        onClick={() => {
+          console.log("Back button clicked");
+          onBack();
+        }}
       >
         ← Back
       </button>

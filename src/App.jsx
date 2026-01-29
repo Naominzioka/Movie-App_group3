@@ -39,6 +39,7 @@ function App() {
           setSearchTerm={setSearchTerm}
           setActiveTab={setActiveTab}
           addToMyList={addToMyList}
+          myList={myList}
         />
       )}
 
@@ -48,15 +49,18 @@ function App() {
           setSearchTerm={setSearchTerm}
           setActiveTab={setActiveTab}
           addToMyList={addToMyList}
+          myList={myList}
         />
       )}
 
       {activeTab === "mylist" && (
+        <div className="container">
         <MyList
           myList={myList}
           removeFromMyList={removeFromMyList}
           onBack={() => setActiveTab("movies")}
         />
+        </div>
       )}
     </>
   );

@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-function ShowCard({ show, addToMyList }) {
+function ShowCard({ show, addToMyList ,myList}) {
   const [showEpisodes, setShowEpisodes] = useState(false);
   const [activeEpisode, setActiveEpisode] = useState(null);
+    
+  const isAdded = myList?.some((i) => i.id === show.id);
 
   const getEpisodeIdentifier = (url) => {
     if (!url) return null;
@@ -27,10 +29,10 @@ function ShowCard({ show, addToMyList }) {
         {/* Add to My List */}
         <button
           className="list-btn"
-          style={{ marginTop: "10px" }}
+          style={{ marginTop: "10px" ,backgroundColor: isAdded ? "#f02308ff" : "#1a3a5a",}}
           onClick={() => addToMyList({ ...show, type: "show" })}
         >
-          + My List
+            {isAdded ? "Added" : "+ My List"}
         </button>
 
         {/* Toggle episodes */}
@@ -61,7 +63,7 @@ function ShowCard({ show, addToMyList }) {
                   listStyle: "none",
                   cursor: "pointer",
                   padding: "6px 0",
-                  color: activeEpisode?.name === episode.name ? "#22c55e" : "#93c5fd",
+                  color: activeEpisode?.name === episode.name ? "#c55022ff" : "#93c5fd",
                   fontWeight: activeEpisode?.name === episode.name ? "bold" : "normal",
                 }}
               >
