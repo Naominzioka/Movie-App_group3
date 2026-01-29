@@ -1,24 +1,11 @@
 import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
+import useFetchData from "../Hooks/useFetchData";
+import "../App.css";
 import Header from "./Header";
 
 function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm, myList }) {
-  const [shows, setShows] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch("/db.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setShows(data.shows || []);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
+  const { data, loading, error } = useFetchData("/db.json");
 
   if (loading || error) {
     return (
@@ -28,10 +15,10 @@ function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm, myList 
     );
   }
 
-  const filteredShows = shows.filter((show) =>
+  const filteredShows = (data?.shows || []).filter((show) =>
     show.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  
   return (
     <main className="container">
      
