@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import Header from "./Header";
-import Search from "./Search";
+import useFetchData from "../Hooks/useFetchData"
 
 const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm , myList}) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [data, setData] = useState({ movies: [] });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const {data, loading, error} = useFetchData("/db.json");
 
   // Safe extraction of Archive.org identifier
   const getArchiveIdentifier = (url) => {
@@ -15,19 +12,6 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm , myList}
     const match = url.match(/archive\.org\/download\/([^\/]+)/);
     return match ? match[1] : null;
   };
-
-  useEffect(() => {
-    fetch("/db.json")
-      .then((res) => res.json())
-      .then((jsonData) => {
-        setData(jsonData);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-      });
-  }, []);
 
   if (loading || error) {
     return (
@@ -37,9 +21,10 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm , myList}
     );
   }
 
-  const filteredMovies = data.movies.filter((movie) =>
+  const filteredMovies = (data?.movies || []).filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   return (
     <main className="container">
