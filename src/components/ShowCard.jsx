@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ShowCard({ show, addToMyList }) {
+function ShowCard({ show, addToMyList, user }) {
   const [showEpisodes, setShowEpisodes] = useState(false);
   const [activeEpisode, setActiveEpisode] = useState(null);
 
@@ -25,13 +25,17 @@ function ShowCard({ show, addToMyList }) {
         <span>{show.rating} ⭐</span>
 
         {/* Add to My List */}
-        <button
-          className="list-btn"
-          style={{ marginTop: "10px" }}
-          onClick={() => addToMyList({ ...show, type: "show" })}
-        >
-          + My List
-        </button>
+        {user ? (
+          <button
+            className="list-btn"
+            style={{ marginTop: "10px" }}
+            onClick={() => addToMyList({ ...show, type: "show" })}
+          >
+            + My List
+          </button>
+        ) : (
+          <p style={{ fontSize: "0.8rem", color: "#aaa" }}>Login to save</p>
+        )}
 
         {/* Toggle episodes */}
         <button

@@ -3,8 +3,7 @@ import "../App.css";
 import { User } from "lucide-react";
 import Search from "./Search";
 
-function Header({ onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearchTerm }) {
-  const [showAccount, setShowAccount] = useState(false);
+function Header({ user, onGoToLogin, onLogout, onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearchTerm }) {
 
   return (
     <header className="main-header">
@@ -48,18 +47,19 @@ function Header({ onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearch
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       <div className="user-menu">
-        <User
-          size={25}
-          color="white"
-          onClick={() => setShowAccount((prev) => !prev)}
-          style={{ cursor: "pointer" }}
-        />
-
-        {showAccount && (
-          <div className="dropdown-menu">
-            <a href="#account">Account</a>
-            <a href="#settings">Settings</a>
+        {user ? (
+          <div className="user-info">
+            <span className="welcome-text">Hi, {user.name}</span>
+            <User size={25} color="#22c55e" />
+            <button onClick={onLogout} className="logout-btn">Logout</button>
           </div>
+        ) : (
+          <User
+            size={25}
+            color="white"
+            onClick={onGoToLogin}
+            style={{ cursor: "pointer" }}
+          />
         )}
       </div>
     </header>

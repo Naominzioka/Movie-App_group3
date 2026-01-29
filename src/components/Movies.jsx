@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import Header from "./Header";
 import Search from "./Search";
 
-const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
+const Movies = ({ addToMyList, searchTerm, setSearchTerm,user }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [data, setData] = useState({ movies: [] });
   const [loading, setLoading] = useState(true);
@@ -43,8 +42,6 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
 
   return (
     <main className="container">
-      
-
       {selectedMovie ? (
         <div className="player-view">
           <button
@@ -90,12 +87,16 @@ const Movies = ({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) => {
                 <div className="card-meta">
                   <h3>{movie.title}</h3>
                   <span>{movie.rating} ⭐</span>
-                  <button
-                    className="list-btn"
-                    onClick={() => addToMyList({ ...movie, type: "movie" })}
-                  >
-                    + My List
-                  </button>
+                  {user ? (
+                    <button
+                      className="list-btn"
+                      onClick={() => addToMyList({ ...movie, type: "movie" })}
+                    >
+                      + My List
+                    </button>
+                  ) : (
+                    <p style={{ fontSize: "0.8rem", color: "#aaa" }}>Login to save</p>
+                  )}
                 </div>
               </div>
             ))}

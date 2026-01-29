@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ShowCard from "./ShowCard";
 import Header from "./Header";
 
-function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm }) {
+function TVShows({ addToMyList, setActiveTab, searchTerm, setSearchTerm ,user}) {
   const [shows, setShows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
