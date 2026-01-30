@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
-import useFetchData from "../Hooks/useFetchData"
+import useFetchData from "../Hooks/useFetchData";
 
-const Movies = ({ addToMyList, searchTerm , myList}) => {
+import Search from "./Search";
+
+const Movies = ({ addToMyList, searchTerm, setSearchTerm, user }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const {data, loading, error} = useFetchData("/db.json");
+  const { data, loading, error } = useFetchData("/db.json");
 
   // Safe extraction of Archive.org identifier
   const getArchiveIdentifier = (url) => {
@@ -24,11 +26,10 @@ const Movies = ({ addToMyList, searchTerm , myList}) => {
   const filteredMovies = (data?.movies || []).filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
+
 
   return (
     <main className="container">
-
 
       {selectedMovie ? (
         <div className="player-view">
@@ -75,15 +76,13 @@ const Movies = ({ addToMyList, searchTerm , myList}) => {
                 <div className="card-meta">
                   <h3>{movie.title}</h3>
                   <span>{movie.rating} ⭐</span>
+
+
                   <button
                     className="list-btn"
-                    style={{
-                      backgroundColor: myList.some((i) => i.id === movie.id) ? "#eb2b1dff" : "#1a3a5a", // green if added
-                    }}
                     onClick={() => addToMyList({ ...movie, type: "movie" })}
                   >
-
-                    {myList.some((i) => i.id === movie.id) ? "Added" : "+ My List"}
+                    + My List
                   </button>
                 </div>
               </div>

@@ -1,16 +1,15 @@
 import React from "react";
 import "../App.css";
+import { useNavigate } from "react-router-dom";
 
-const MyList = ({ myList, removeFromMyList, onBack }) => {
+const MyList = ({ myList, removeFromMyList }) => {
+  const navigate = useNavigate();
   return (
-    <section className="gallery" style={{marginTop: "60px"}}>
+    <section className="gallery" style={{ marginTop: "60px" }}>
       {/* Back button */}
       <button
         className="back-button"
-        onClick={() => {
-          console.log("Back button clicked");
-          onBack();
-        }}
+        onClick={() => navigate(-1)}
       >
         ← Back
       </button>
