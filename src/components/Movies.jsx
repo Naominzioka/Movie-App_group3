@@ -4,7 +4,7 @@ import useFetchData from "../Hooks/useFetchData";
 
 import Search from "./Search";
 
-const Movies = ({ addToMyList, searchTerm, setSearchTerm, user }) => {
+const Movies = ({ addToMyList, searchTerm, setSearchTerm, user, myList }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const { data, loading, error } = useFetchData("/db.json");
 
@@ -82,7 +82,7 @@ const Movies = ({ addToMyList, searchTerm, setSearchTerm, user }) => {
                     className="list-btn"
                     onClick={() => addToMyList({ ...movie, type: "movie" })}
                   >
-                    + My List
+                     {myList.some((i) => i.id === movie.id) ? "Added" : "+ My List"}
                   </button>
                 </div>
               </div>
