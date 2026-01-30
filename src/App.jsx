@@ -4,6 +4,7 @@ import Movies from "./components/Movies";
 import TVShows from "./components/TVShows";
 import MyList from "./components/MyList";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Login from "./components/Login";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
@@ -91,6 +92,7 @@ function App() {
               <Route path="/" element={<Navigate to="/movies" />} />
             </Routes>
           </div>
+          <Footer />
         </>
       )}
     </BrowserRouter>

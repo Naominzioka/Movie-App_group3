@@ -306,3 +306,17 @@ a:focus {
   border-radius: 12px;
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
+
+.main-footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(10, 22, 40, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.main-footer p {
+  margin: 0;
+}
