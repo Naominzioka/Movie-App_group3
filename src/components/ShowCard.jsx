@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-function ShowCard({ show, addToMyList ,myList}) {
+function ShowCard({ show, addToMyList, myList }) {
   const [showEpisodes, setShowEpisodes] = useState(false);
   const [activeEpisode, setActiveEpisode] = useState(null);
-    
+
   const isAdded = myList?.some((i) => i.id === show.id);
 
   const getEpisodeIdentifier = (url) => {
@@ -29,10 +29,10 @@ function ShowCard({ show, addToMyList ,myList}) {
         {/* Add to My List */}
         <button
           className="list-btn"
-          style={{ marginTop: "10px" ,backgroundColor: isAdded ? "#f02308ff" : "#1a3a5a",}}
+          style={{ marginTop: "10px", backgroundColor: isAdded ? "#f02308ff" : "#1a3a5a", }}
           onClick={() => addToMyList({ ...show, type: "show" })}
         >
-            {isAdded ? "Added" : "+ My List"}
+          {isAdded ? "Added" : "+ My List"}
         </button>
 
         {/* Toggle episodes */}
@@ -75,14 +75,25 @@ function ShowCard({ show, addToMyList ,myList}) {
 
         {/* Episode video player */}
         {activeEpisode && (
-          <iframe
-            src={`https://archive.org/embed/${getEpisodeIdentifier(activeEpisode.url)}`}
-            width="100%"
-            height="200"
-            allowFullScreen
-            title={activeEpisode.name}
-            style={{ marginTop: "10px", borderRadius: "6px" }}
-          />
+          <div className="player-container" style={{ marginTop: "15px" }}>
+            {/* 1. The Button must be at the top of this block */}
+            <button
+              className="back-button"
+              onClick={() => setActiveEpisode(null)}
+              style={{ marginBottom: "10px", display: "block" }}
+            >
+              ← Close Player
+            </button>
+            <iframe
+              src={`https://archive.org/embed/${getEpisodeIdentifier(activeEpisode.url)}`}
+              width="100%"
+              height="250"
+              allowFullScreen
+              title={activeEpisode.name}
+              style={{ borderRadius: "6px", border: "1px solid #333" }}
+            />
+            <p style={{ color: "#93c5fd", marginTop: "5px" }}>Playing: {activeEpisode.name}</p>
+          </div>
         )}
       </div>
     </div>
