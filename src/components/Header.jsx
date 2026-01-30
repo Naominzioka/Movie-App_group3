@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "../App.css";
 import { User } from "lucide-react";
 import Search from "./Search";
+import { Link } from "react-router-dom";
 
-function Header({ onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearchTerm }) {
+function Header({ onGoToMovies, onGoToMyList, onGoToShows, onLogout, searchTerm, setSearchTerm }) {
   const [showAccount, setShowAccount] = useState(false);
 
   return (
@@ -11,38 +12,9 @@ function Header({ onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearch
       <h1 style={{ color: "#FFFFFF" }}>CINEMA HD</h1>
 
       <nav>
-        <a
-          href="#movies"
-          onClick={(e) => {
-            e.preventDefault();
-            onGoToMovies();
-            window.scrollTo(0, 0);
-          }}
-        >
-          Movies
-        </a>
-
-        <a
-          href="#shows"
-          onClick={(e) => {
-            e.preventDefault();
-            onGoToShows();
-            window.scrollTo(0, 0);
-          }}
-        >
-          TV Shows
-        </a>
-
-        <a
-          href="#mylist"
-          onClick={(e) => {
-            e.preventDefault();
-            onGoToMyList();
-            window.scrollTo(0, 0);
-          }}
-        >
-          My List
-        </a>
+        <Link to="/movies">Movies</Link>
+        <Link to="/shows">TV Shows</Link>
+        <Link to="/mylist">My List</Link>
       </nav>
 
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -57,8 +29,10 @@ function Header({ onGoToMovies, onGoToMyList, onGoToShows, searchTerm, setSearch
 
         {showAccount && (
           <div className="dropdown-menu">
-            <a href="#account">Account</a>
-            <a href="#settings">Settings</a>
+            <a href="#logout" onClick={(e) => {
+              e.preventDefault();
+              onLogout(); // This calls the function passed from App.jsx
+            }}>Logout</a>
           </div>
         )}
       </div>
