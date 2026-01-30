@@ -7,9 +7,13 @@ const Movies = ({ addToMyList, searchTerm , myList}) => {
   const {data, loading, error} = useFetchData("/db.json");
 
   // Safe extraction of Archive.org identifier
+  //it extracts the unique identifier from the "API-URL" field of the selected movie object.
   const getArchiveIdentifier = (url) => {
     if (!url) return null;
+    // Regular expression to match the identifier pattern
     const match = url.match(/archive\.org\/download\/([^\/]+)/);
+    // Return the captured identifier or null if no match
+    //match[1] contains the captured identifier from the URL
     return match ? match[1] : null;
   };
 
@@ -21,6 +25,7 @@ const Movies = ({ addToMyList, searchTerm , myList}) => {
     );
   }
 
+  // Filter movies based on search term
   const filteredMovies = (data?.movies || []).filter((movie) =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -40,6 +45,7 @@ const Movies = ({ addToMyList, searchTerm , myList}) => {
           </button>
 
           <div className="video-box">
+            {/* Embed iframe for the movie media */}
             <iframe
               src={`https://archive.org/embed/${getArchiveIdentifier(
                 selectedMovie["API-URL"]
