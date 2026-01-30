@@ -6,9 +6,13 @@ function ShowCard({ show, addToMyList, myList }) {
 
   const isAdded = myList?.some((i) => i.id === show.id);
 
+  // Safe extraction of Archive.org identifier for episodes
   const getEpisodeIdentifier = (url) => {
+    // Return null if URL is not provided
     if (!url) return null;
+    // Regular expression to match the identifier pattern
     const match = url.match(/archive\.org\/download\/([^\/]+)/);
+    // Return the captured identifier or null if no match
     return match ? match[1] : null;
   };
 
