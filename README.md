@@ -2,6 +2,9 @@
 
 A simple movie and TV show streaming app built with React. Browse classic films and TV shows, watch them online, and save your favorites to a personal list.
 
+## Public URL
+https://group3movieapp.netlify.app/
+
 ## Features
 
 - Browse a collection of classic movies
